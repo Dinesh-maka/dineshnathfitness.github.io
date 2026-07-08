@@ -59,7 +59,7 @@
 
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
-    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; animation-delay:0s !important; transition-duration:0.01ms !important;}
   }
 
   a{color:inherit;text-decoration:none;}
@@ -69,10 +69,6 @@
 
   .display{font-family:'Anton', 'Cambria', Georgia, serif; text-transform:uppercase; letter-spacing:0.02em; font-weight:400;}
   .mono{font-family:'Cambria', Georgia, serif;}
-
-  .stripes{
-    background-image: repeating-linear-gradient(-45deg, rgba(218,146,28,0.06) 0px, rgba(218,146,28,0.06) 2px, transparent 2px, transparent 14px);
-  }
 
   /* ============ NAV ============ */
   .skip-link{
@@ -165,7 +161,7 @@
 
   section[id], header[id]{scroll-margin-top:96px;}
 
-  @media (max-width:860px){
+  @media (max-width:1180px){
     .nav-toggle{display:flex;}
     .nav-menu{
       position:absolute; top:100%; left:0; right:0;
@@ -194,27 +190,22 @@
   /* ============ HERO ============ */
   .hero{
     position:relative;
-    padding:100px 0 88px;
+    padding:128px 0 108px;
     overflow:hidden;
     border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(ellipse 900px 560px at 84% 6%, rgba(218,146,28,0.18), transparent 60%),
+      radial-gradient(ellipse 640px 480px at 8% 104%, rgba(218,146,28,0.07), transparent 65%),
+      var(--bg);
   }
-  .plates-decor{
-    position:absolute; top:-140px; right:-160px;
-    width:520px; height:520px;
-    pointer-events:none;
-    z-index:0;
-  }
-  .plates-decor .ring{
-    position:absolute; border-radius:50%;
-    border:2px solid var(--iron-light);
-    opacity:0.4;
-  }
-  .plates-decor .ring:nth-child(1){width:520px;height:520px; top:0; left:0;}
-  .plates-decor .ring:nth-child(2){width:390px;height:390px; top:65px; left:65px; border-color:var(--gold); opacity:0.5;}
-  .plates-decor .ring:nth-child(3){width:260px;height:260px; top:130px; left:130px;}
-  .plates-decor .ring:nth-child(4){width:130px;height:130px; top:195px; left:195px; border-color:var(--gold); opacity:0.7;}
 
-  .hero-inner{position:relative; z-index:1; max-width:760px;}
+  .hero-grid{
+    position:relative; z-index:1;
+    display:grid; grid-template-columns:1.15fr 0.85fr;
+    gap:64px; align-items:center;
+  }
+
+  .hero-copy{max-width:640px;}
 
   .eyebrow-row{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px;}
   .badge{
@@ -229,8 +220,8 @@
   }
 
   h1.hero-headline{
-    font-size:clamp(44px, 7.5vw, 88px);
-    line-height:0.98;
+    font-size:clamp(40px, 6vw, 72px);
+    line-height:1.02;
     margin-bottom:26px;
   }
   h1.hero-headline .accent{color:var(--gold);}
@@ -240,6 +231,7 @@
     max-width:520px; margin-bottom:38px; font-weight:500;
   }
 
+  .hero-cta-row{display:flex; flex-wrap:wrap; align-items:center; gap:18px;}
 
   .cta-primary{
     display:inline-flex; align-items:center; gap:10px;
@@ -253,6 +245,70 @@
   .cta-primary:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--iron-light); background:var(--gold-bright);}
   .cta-primary:focus-visible{outline:3px solid var(--gold); outline-offset:3px;}
   .cta-primary svg{width:20px;height:20px;flex-shrink:0;}
+
+  .cta-secondary{
+    display:inline-flex; align-items:center; gap:8px;
+    color:var(--text); font-weight:700; font-size:15px; letter-spacing:0.01em;
+    padding:17px 4px;
+    border-bottom:2px solid var(--iron-light);
+    transition:color 0.2s ease, border-color 0.2s ease, gap 0.2s ease;
+  }
+  .cta-secondary svg{width:16px; height:16px; transition:transform 0.2s ease;}
+  .cta-secondary:hover{color:var(--gold); border-color:var(--gold); gap:12px;}
+  .cta-secondary:hover svg{transform:translateX(3px);}
+  .cta-secondary:focus-visible{outline:2px solid var(--gold); outline-offset:4px;}
+
+  /* ---- Hero visual (signature stat panel — swap in a coach photo later) ---- */
+  .hero-visual{position:relative; display:flex; align-items:center; justify-content:center; min-height:380px;}
+  .hero-visual-glow{
+    position:absolute; width:420px; height:420px; border-radius:50%;
+    background:radial-gradient(circle, rgba(218,146,28,0.22), transparent 70%);
+    filter:blur(10px); pointer-events:none;
+  }
+  .hero-visual-rings{position:absolute; inset:0; pointer-events:none;}
+  .hero-visual-rings .ring{
+    position:absolute; border-radius:50%;
+    border:2px solid var(--iron-light);
+    opacity:0.35; top:50%; left:50%; transform:translate(-50%,-50%);
+  }
+  .hero-visual-rings .ring:nth-child(1){width:420px; height:420px;}
+  .hero-visual-rings .ring:nth-child(2){width:320px; height:320px; border-color:var(--gold); opacity:0.45;}
+  .hero-visual-rings .ring:nth-child(3){width:220px; height:220px;}
+
+  .hero-visual-card{
+    position:relative; z-index:1;
+    width:100%; max-width:340px;
+    background:rgba(20,19,17,0.72);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    padding:44px 34px;
+    text-align:center;
+  }
+  .hero-visual-figure{
+    display:flex; align-items:baseline; justify-content:center; gap:2px;
+    font-family:'Cambria', Georgia, serif; font-weight:700;
+    font-size:clamp(52px, 6vw, 68px); color:var(--text); line-height:1;
+  }
+  .hero-visual-figure .suffix{color:var(--gold);}
+  .hero-visual-label{
+    font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--iron); margin-top:10px;
+  }
+  .hero-visual-divider{width:40px; height:1px; background:var(--line); margin:22px auto;}
+  .hero-visual-sub{font-size:14px; line-height:1.6; color:var(--iron);}
+
+  /* ---- Entrance animations ---- */
+  @keyframes heroFadeUp{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .hero-copy .eyebrow-row{animation:heroFadeUp 0.6s ease 0.05s both;}
+  .hero-copy .hero-headline{animation:heroFadeUp 0.7s ease 0.15s both;}
+  .hero-copy .hero-sub{animation:heroFadeUp 0.7s ease 0.28s both;}
+  .hero-copy .hero-cta-row{animation:heroFadeUp 0.7s ease 0.4s both;}
+  .hero-visual{animation:heroFadeUp 0.8s ease 0.35s both;}
 
 
   /* ============ PILLARS (Build / Elevate / Transform) ============ */
@@ -382,11 +438,15 @@
     .stats .wrap{grid-template-columns:1fr; gap:20px;}
     .stat{border-left:none; padding-left:0; border-bottom:1px solid var(--line); padding-bottom:20px;}
     .stat:last-child{border-bottom:none;}
-    .plates-decor{opacity:0.5; width:360px; height:360px; top:-100px; right:-140px;}
-    .plates-decor .ring:nth-child(1){width:360px;height:360px;}
-    .plates-decor .ring:nth-child(2){width:270px;height:270px; top:45px; left:45px;}
-    .plates-decor .ring:nth-child(3){width:180px;height:180px; top:90px; left:90px;}
-    .plates-decor .ring:nth-child(4){width:90px;height:90px; top:135px; left:135px;}
+    .hero{padding:100px 0 72px;}
+    .hero-grid{grid-template-columns:1fr; gap:56px;}
+    .hero-copy{max-width:none;}
+    .hero-visual{min-height:0;}
+    .hero-visual-glow{width:300px; height:300px;}
+    .hero-visual-rings .ring:nth-child(1){width:300px; height:300px;}
+    .hero-visual-rings .ring:nth-child(2){width:230px; height:230px;}
+    .hero-visual-rings .ring:nth-child(3){width:160px; height:160px;}
+    .hero-visual-card{max-width:300px; padding:34px 28px;}
   }
   @media (max-width: 560px){
     .brand img{height:42px;}
@@ -399,7 +459,10 @@
     .icon-link svg{width:17px; height:17px;}
     .cta-small{padding:10px 16px; font-size:12px;}
     .hero-headline{font-size:clamp(34px, 9vw, 52px) !important;}
+    .hero-cta-row{gap:14px;}
     .cta-primary{padding:14px 22px; font-size:14px; flex-wrap:wrap; justify-content:center;}
+    .cta-secondary{padding:13px 4px; font-size:14px;}
+    .hero-visual-card{padding:30px 24px;}
     .cta-band .cta-primary{text-align:center;}
     section[id], header[id]{scroll-margin-top:78px;}
   }
@@ -455,23 +518,40 @@
   </div>
 </nav>
 
-<header class="hero stripes" id="home">
-  <div class="plates-decor" aria-hidden="true">
-    <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
-  </div>
-  <div class="wrap hero-inner">
-    <div class="eyebrow-row">
-      <span class="badge">GGFI Certified</span>
-      <span class="badge">NCVET Certified</span>
-      <span class="badge">CPR &amp; AED Certified</span>
-      <span class="badge">Online &amp; Offline</span>
+<header class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow-row">
+        <span class="badge">GGFI Certified</span>
+        <span class="badge">NCVET Certified</span>
+        <span class="badge">CPR &amp; AED Certified</span>
+        <span class="badge">Online &amp; Offline</span>
+      </div>
+      <h1 class="hero-headline display">300+ TRANSFORMATIONS.<br><span class="accent">ZERO SHORTCUTS.</span></h1>
+      <p class="hero-sub">Science-based fat loss, muscle gain and strength coaching for working professionals, beginners and women built around your actual schedule, not an extreme diet.</p>
+      <div class="hero-cta-row">
+        <a class="cta-primary" href="https://wa.me/919885513807?text=Hi%2C%20I%27d%20like%20to%20book%20my%20Free%20Assessment" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.5 3.58 1.44 5.06L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.28.57-.35.76-.35.19 0 .38.001.55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.17-.31.38-.44.5-.15.15-.3.31-.13.6.17.29.77 1.27 1.66 2.05 1.14 1.02 2.11 1.34 2.4 1.49.29.15.46.13.63-.05.17-.19.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.9.91.28.15.46.22.53.34.07.13.07.72-.17 1.41z"/></svg>
+          Book Free Assessment
+        </a>
+        <a class="cta-secondary" href="#transformations">
+          View Transformations
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
     </div>
-    <h1 class="hero-headline display">300+ TRANSFORMATIONS.<br><span class="accent">ZERO SHORTCUTS.</span></h1>
-    <p class="hero-sub">Science-based fat loss, muscle gain and strength coaching for working professionals, beginners and women built around your actual schedule, not an extreme diet.</p>
-    <a class="cta-primary" href="https://wa.me/919885513807?text=TRANSFORM" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.5 3.58 1.44 5.06L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.28.57-.35.76-.35.19 0 .38.001.55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.17-.31.38-.44.5-.15.15-.3.31-.13.6.17.29.77 1.27 1.66 2.05 1.14 1.02 2.11 1.34 2.4 1.49.29.15.46.13.63-.05.17-.19.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.9.91.28.15.46.22.53.34.07.13.07.72-.17 1.41z"/></svg>
-      DM "TRANSFORM" on WhatsApp
-    </a>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-visual-glow"></div>
+      <div class="hero-visual-rings">
+        <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+      </div>
+      <div class="hero-visual-card">
+        <div class="hero-visual-figure"><span class="hero-count" data-count="300">0</span><span class="suffix">+</span></div>
+        <div class="hero-visual-label">Real client transformations</div>
+        <div class="hero-visual-divider"></div>
+        <div class="hero-visual-sub">Fat loss &middot; Muscle gain &middot; Strength &mdash; built around your life, not a template.</div>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -668,6 +748,22 @@
 </footer>
 
 <script>
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Shared count-up animation (cubic ease-out) used by the hero stat and the
+  // Trust & Statistics band, so the easing/tick logic lives in one place.
+  function animateCountTo(target, duration, onUpdate){
+    const start = performance.now();
+    function tick(now){
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      onUpdate(Math.floor(eased * target));
+      if (progress < 1) requestAnimationFrame(tick);
+      else onUpdate(target);
+    }
+    requestAnimationFrame(tick);
+  }
+
   /* ============ NAV ============ */
   (function(){
     const nav = document.getElementById('site-nav');
@@ -699,7 +795,8 @@
       document.body.classList.add('nav-open');
     }
     toggle.addEventListener('click', () => {
-      menu.classList.contains('is-open') ? closeMenu() : openMenu();
+      if (menu.classList.contains('is-open')) closeMenu();
+      else openMenu();
     });
     navLinks.forEach(link => link.addEventListener('click', closeMenu));
     document.addEventListener('keydown', (e) => {
@@ -739,30 +836,32 @@
     }
   })();
 
-  const counters = document.querySelectorAll('.stat-num');
-  const animateCount = (el) => {
+  /* ============ HERO COUNTER ============ */
+  (function(){
+    const el = document.querySelector('.hero-count');
+    if (!el) return;
     const target = parseInt(el.getAttribute('data-count'), 10);
-    const countEl = el.querySelector('.count');
-    const duration = 900;
-    const start = performance.now();
-    function tick(now){
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      countEl.textContent = Math.floor(eased * target);
-      if (progress < 1) requestAnimationFrame(tick);
-      else countEl.textContent = target;
+
+    if (prefersReducedMotion) {
+      el.textContent = target;
+      return;
     }
-    requestAnimationFrame(tick);
-  };
+    setTimeout(() => {
+      animateCountTo(target, 1200, (val) => { el.textContent = val; });
+    }, 500);
+  })();
 
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
+  /* ============ TRUST & STATISTICS COUNTERS ============ */
+  const counters = document.querySelectorAll('.stat-num');
   if ('IntersectionObserver' in window && !prefersReducedMotion) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          animateCount(entry.target);
-          observer.unobserve(entry.target);
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-count'), 10);
+          const countEl = el.querySelector('.count');
+          animateCountTo(target, 900, (val) => { countEl.textContent = val; });
+          observer.unobserve(el);
         }
       });
     }, { threshold: 0.4 });
@@ -773,6 +872,7 @@
     });
   }
 
+  /* ============ SCROLL REVEAL ============ */
   const revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && !prefersReducedMotion) {
     const revealObserver = new IntersectionObserver((entries) => {
