@@ -291,6 +291,7 @@
     font-family:'Cambria', Georgia, serif; font-weight:700;
     font-size:clamp(52px, 6vw, 68px); color:var(--text); line-height:1;
   }
+  .hero-visual-figure .suffix{color:var(--gold);}
   .hero-visual-label{
     font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
     color:var(--iron); margin-top:10px;
@@ -578,11 +579,13 @@
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <div class="eyebrow-row">
-        <span class="badge">Certified Coach</span>
+        <span class="badge">GGFI Certified</span>
+        <span class="badge">NCVET Certified</span>
+        <span class="badge">CPR &amp; AED Certified</span>
         <span class="badge">Online &amp; Offline</span>
       </div>
       <h1 class="hero-headline display">300+ TRANSFORMATIONS.<br><span class="accent">ZERO SHORTCUTS.</span></h1>
-      <p class="hero-sub">Science-based fat loss, muscle gain and strength coaching — built around your real schedule, not a rigid template.</p>
+      <p class="hero-sub">Science-based fat loss, muscle gain and strength coaching for working professionals, beginners and women built around your actual schedule, not an extreme diet.</p>
       <div class="hero-cta-row">
         <a class="cta-primary" href="https://wa.me/919885513807?text=Hi%2C%20I%27d%20like%20to%20book%20my%20Free%20Assessment" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.5 3.58 1.44 5.06L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.28.57-.35.76-.35.19 0 .38.001.55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.17-.31.38-.44.5-.15.15-.3.31-.13.6.17.29.77 1.27 1.66 2.05 1.14 1.02 2.11 1.34 2.4 1.49.29.15.46.13.63-.05.17-.19.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.9.91.28.15.46.22.53.34.07.13.07.72-.17 1.41z"/></svg>
@@ -600,10 +603,10 @@
         <div class="ring"></div><div class="ring"></div><div class="ring"></div>
       </div>
       <div class="hero-visual-card">
-        <div class="hero-visual-figure">1:1</div>
-        <div class="hero-visual-label">Personal Coaching</div>
+        <div class="hero-visual-figure"><span class="hero-count" data-count="300">0</span><span class="suffix">+</span></div>
+        <div class="hero-visual-label">Real client transformations</div>
         <div class="hero-visual-divider"></div>
-        <div class="hero-visual-sub">Direct access to your coach for real conversations, honest feedback, and adjustments whenever your week changes.</div>
+        <div class="hero-visual-sub">Fat loss &middot; Muscle gain &middot; Strength &mdash; built around your life, not a template.</div>
       </div>
     </div>
   </div>
@@ -919,6 +922,21 @@
       }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
       spyTargets.forEach(t => spy.observe(t.section));
     }
+  })();
+
+  /* ============ HERO COUNTER ============ */
+  (function(){
+    const el = document.querySelector('.hero-count');
+    if (!el) return;
+    const target = parseInt(el.getAttribute('data-count'), 10);
+
+    if (prefersReducedMotion) {
+      el.textContent = target;
+      return;
+    }
+    setTimeout(() => {
+      animateCountTo(target, 1200, (val) => { el.textContent = val; });
+    }, 500);
   })();
 
   /* ============ TRUST & STATISTICS COUNTERS ============ */
