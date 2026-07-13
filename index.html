@@ -521,6 +521,91 @@
   .about.is-visible .about-copy{opacity:1; transform:translateX(0);}
   .about.is-visible .about-side{opacity:1; transform:translateX(0);}
 
+  /* ============ PROGRAMS ============ */
+  .programs{border-bottom:1px solid var(--line); padding-top:96px; padding-bottom:96px;}
+
+  .programs-header{max-width:680px; margin:0 auto 56px; text-align:center;}
+  .programs-header .kicker{display:flex; justify-content:center;}
+  .programs-title{font-size:clamp(28px,3.8vw,44px); line-height:1.08; margin-bottom:18px;}
+  .programs-desc{font-size:17px; line-height:1.7; color:var(--iron);}
+
+  .programs-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:24px;
+    align-items:stretch;
+  }
+  .program-card{
+    display:flex; flex-direction:column;
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px 26px;
+    background:linear-gradient(180deg, rgba(243,240,232,0.025), transparent);
+    opacity:0; transform:translateY(20px);
+    transition:opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .programs.is-visible .program-card{opacity:1; transform:translateY(0);}
+  .programs.is-visible .program-card:nth-child(1){transition-delay:0.05s;}
+  .programs.is-visible .program-card:nth-child(2){transition-delay:0.12s;}
+  .programs.is-visible .program-card:nth-child(3){transition-delay:0.19s;}
+  .programs.is-visible .program-card:nth-child(4){transition-delay:0.26s;}
+  .programs.is-visible .program-card:nth-child(5){transition-delay:0.33s;}
+  .programs.is-visible .program-card:hover{
+    transform:translateY(-6px);
+    border-color:rgba(218,146,28,0.45);
+    box-shadow:0 24px 48px -26px rgba(218,146,28,0.4);
+    transition-delay:0s;
+  }
+  .program-icon{
+    width:60px; height:60px; margin-bottom:20px; border-radius:50%;
+    border:1.5px solid var(--gold); color:var(--gold); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    transition:background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .program-icon svg{width:27px; height:27px;}
+  .programs.is-visible .program-card:hover .program-icon{background:var(--gold); color:#0A0A09; box-shadow:0 0 20px rgba(218,146,28,0.5);}
+  .program-card h3{font-size:19px; margin-bottom:10px; letter-spacing:0.01em;}
+  .program-desc{font-size:14.5px; line-height:1.6; color:var(--iron); margin-bottom:14px;}
+  .program-for{font-size:13px; line-height:1.6; color:var(--iron); margin-bottom:18px;}
+  .program-for strong{color:var(--text); font-weight:700;}
+  .program-benefits{list-style:none; margin-bottom:24px; flex-grow:1;}
+  .program-benefits li{
+    position:relative; padding-left:22px; font-size:13.5px; color:var(--text);
+    margin-bottom:9px; line-height:1.4;
+  }
+  .program-benefits li:last-child{margin-bottom:0;}
+  .program-benefits li::before{
+    content:''; position:absolute; left:0; top:6px; width:11px; height:11px;
+    border:1.5px solid var(--gold); border-radius:50%;
+  }
+  .program-cta{align-self:flex-start;}
+
+  /* Every Program Includes */
+  .programs-includes{
+    margin-top:72px; padding:48px 40px;
+    border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--bg-elevated);
+  }
+  .programs-includes-title{
+    text-align:center; font-size:clamp(20px,2.4vw,28px); margin-bottom:32px;
+  }
+  .programs-includes-grid{
+    list-style:none; display:grid; grid-template-columns:repeat(4,1fr); gap:18px 24px;
+  }
+  .programs-includes-grid li{
+    display:flex; align-items:center; gap:10px;
+    font-size:14px; font-weight:600; color:var(--text);
+  }
+  .includes-check{
+    width:22px; height:22px; border-radius:50%; flex-shrink:0;
+    background:rgba(218,146,28,0.14); color:var(--gold);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .includes-check svg{width:12px; height:12px;}
+
+  /* Programs internal CTA */
+  .programs-cta{max-width:680px; margin:72px auto 0; text-align:center;}
+  .programs-cta-title{font-size:clamp(24px,3vw,34px); line-height:1.15; margin-bottom:16px;}
+  .programs-cta-desc{font-size:16px; line-height:1.7; color:var(--iron); margin-bottom:30px;}
+  .programs-cta-row{justify-content:center;}
+
   /* ============ WHO I COACH ============ */
   .who{background:var(--bg-elevated); border-bottom:1px solid var(--line);}
   .who-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
@@ -595,6 +680,9 @@
     .offer-grid{grid-template-columns:1fr;}
     .pillars-grid{grid-template-columns:1fr; gap:32px;}
     .trust-grid{grid-template-columns:1fr; gap:16px;}
+    .programs-grid{grid-template-columns:repeat(2,1fr);}
+    .programs-includes{padding:36px 26px;}
+    .programs-includes-grid{grid-template-columns:repeat(2,1fr);}
     .hero{padding:100px 0 72px;}
     .hero-grid{grid-template-columns:1fr; gap:56px;}
     .hero-copy{max-width:none;}
@@ -608,6 +696,11 @@
   @media (max-width: 560px){
     .brand img{height:42px;}
     section{padding:64px 0;}
+    .programs{padding-top:56px; padding-bottom:56px;}
+    .programs-grid{grid-template-columns:1fr;}
+    .programs-includes{padding:28px 20px; margin-top:44px;}
+    .programs-includes-grid{grid-template-columns:1fr 1fr; gap:16px;}
+    .programs-cta{margin-top:48px;}
     .hero{padding:64px 0 56px;}
     .wrap{padding:0 18px;}
     nav .wrap{height:68px;}
@@ -630,6 +723,7 @@
     .icon-link{width:30px; height:30px;}
     .icon-link svg{width:15px; height:15px;}
     .nav-menu-actions{gap:10px;}
+    .programs-includes-grid{grid-template-columns:1fr;}
   }
   .reveal{
     opacity:0; transform:translateY(18px);
@@ -877,6 +971,127 @@
         </ul>
       </div>
     </aside>
+  </div>
+</section>
+
+<section class="programs reveal" id="programs" aria-labelledby="programs-heading">
+  <div class="wrap">
+    <div class="programs-header">
+      <div class="kicker">Programs</div>
+      <h2 id="programs-heading" class="programs-title display">Coaching Built Around Your Goals.</h2>
+      <p class="programs-desc">Whether your goal is fat loss, muscle gain, strength, or improving overall fitness, every coaching plan is personalized around your body, schedule, lifestyle, and experience.</p>
+    </div>
+
+    <div class="programs-grid">
+      <article class="program-card">
+        <div class="program-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21c4-1 6-4 6-7.5 0-3-1.5-4.8-2.5-6.5.3 2 0 3-.8 3.8.6-3-1-5.5-3.2-7-.3 2.3-1 3.6-2.5 5.3C7.3 10.5 6 12 6 14.5 6 18 8 20 12 21z" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Fat Loss</h3>
+        <p class="program-desc">Lose body fat sustainably without crash dieting. Science-backed training and nutrition built around your lifestyle.</p>
+        <p class="program-for"><strong>Perfect for:</strong> Busy professionals, beginners, and anyone wanting sustainable fat loss.</p>
+        <ul class="program-benefits">
+          <li>Personalized workouts</li>
+          <li>Nutrition coaching</li>
+          <li>Weekly accountability</li>
+          <li>Lifestyle habits</li>
+        </ul>
+        <a class="cta-small program-cta" href="https://wa.me/919885513807?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20the%20Fat%20Loss%20program" target="_blank" rel="noopener">Learn More</a>
+      </article>
+
+      <article class="program-card">
+        <div class="program-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.5 14.5c-1.2-3 0-6.5 3-8 .8-2 2.8-3.2 4.8-2.2 1 .5 1.6 1.6 1.1 3-1 2.5-1 3.5.2 4.8 1.6 1.7 1.2 4.5-.8 5.7-3.5 2-7.3.3-8.3-3.3z" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Muscle Gain</h3>
+        <p class="program-desc">Build lean muscle with structured progressive overload and proper nutrition.</p>
+        <p class="program-for"><strong>Perfect for:</strong> Beginners and intermediate lifters.</p>
+        <ul class="program-benefits">
+          <li>Progressive programming</li>
+          <li>Muscle-building nutrition</li>
+          <li>Recovery guidance</li>
+          <li>Performance tracking</li>
+        </ul>
+        <a class="cta-small program-cta" href="https://wa.me/919885513807?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20the%20Muscle%20Gain%20program" target="_blank" rel="noopener">Learn More</a>
+      </article>
+
+      <article class="program-card">
+        <div class="program-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="10" width="3" height="4" rx="1"/><rect x="19" y="10" width="3" height="4" rx="1"/><rect x="6" y="9" width="2.5" height="6" rx="0.5"/><rect x="15.5" y="9" width="2.5" height="6" rx="0.5"/><path d="M8.5 12h7" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Strength Coaching</h3>
+        <p class="program-desc">Increase strength, improve lifting technique, and build confidence.</p>
+        <p class="program-for"><strong>Perfect for:</strong> Intermediate lifters and gym enthusiasts.</p>
+        <ul class="program-benefits">
+          <li>Strength programming</li>
+          <li>Mobility work</li>
+          <li>Performance tracking</li>
+          <li>Progressive overload</li>
+        </ul>
+        <a class="cta-small program-cta" href="https://wa.me/919885513807?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20the%20Strength%20Coaching%20program" target="_blank" rel="noopener">Learn More</a>
+      </article>
+
+      <article class="program-card">
+        <div class="program-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Women's Fitness</h3>
+        <p class="program-desc">Personalized coaching for women focused on confidence, strength, fat loss, and long-term health.</p>
+        <p class="program-for"><strong>Perfect for:</strong> Women of all fitness levels.</p>
+        <ul class="program-benefits">
+          <li>Fat loss</li>
+          <li>Strength</li>
+          <li>Toning</li>
+          <li>Lifestyle coaching</li>
+        </ul>
+        <a class="cta-small program-cta" href="https://wa.me/919885513807?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20the%20Women%27s%20Fitness%20program" target="_blank" rel="noopener">Learn More</a>
+      </article>
+
+      <article class="program-card">
+        <div class="program-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Online Coaching</h3>
+        <p class="program-desc">Train with me from anywhere through personalized online coaching.</p>
+        <p class="program-for"><strong>Perfect for:</strong> Anyone who wants flexible, remote coaching from anywhere.</p>
+        <ul class="program-benefits">
+          <li>WhatsApp support</li>
+          <li>Weekly check-ins</li>
+          <li>Form review</li>
+          <li>Nutrition guidance</li>
+        </ul>
+        <a class="cta-small program-cta" href="https://wa.me/919885513807?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20the%20Online%20Coaching%20program" target="_blank" rel="noopener">Learn More</a>
+      </article>
+    </div>
+
+    <div class="programs-includes">
+      <h3 class="programs-includes-title display">Every Program Includes</h3>
+      <ul class="programs-includes-grid">
+        <li><span class="includes-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Personalized Workout Plan</li>
+        <li><span class="includes-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Nutrition Guidance</li>
+        <li><span class="includes-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Weekly Accountability</li>
+        <li><span class="includes-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Progress Tracking</li>
+        <li><span class="includes-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>WhatsApp Support</li>
+        <li><span class="includes-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Exercise Form Review</li>
+        <li><span class="includes-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Lifestyle Coaching</li>
+        <li><span class="includes-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l4 4 10-10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Regular Plan Updates</li>
+      </ul>
+    </div>
+
+    <div class="programs-cta">
+      <h3 class="programs-cta-title display">Not Sure Which Program Is Right For You?</h3>
+      <p class="programs-cta-desc">Book a free assessment call and I'll recommend the best coaching plan based on your goals, experience, and lifestyle.</p>
+      <div class="hero-cta-row programs-cta-row">
+        <a class="cta-primary" href="https://wa.me/919885513807?text=Hi%2C%20I%27d%20like%20help%20choosing%20the%20right%20coaching%20program" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.5 3.58 1.44 5.06L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.28.57-.35.76-.35.19 0 .38.001.55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.17-.31.38-.44.5-.15.15-.3.31-.13.6.17.29.77 1.27 1.66 2.05 1.14 1.02 2.11 1.34 2.4 1.49.29.15.46.13.63-.05.17-.19.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.9.91.28.15.46.22.53.34.07.13.07.72-.17 1.41z"/></svg>
+          Book Free Assessment
+        </a>
+        <a class="cta-secondary" href="#transformations">
+          View Transformations
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
