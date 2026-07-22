@@ -760,6 +760,90 @@
 
   .transform-more{text-align:center; margin-top:48px;}
 
+  /* ============ TESTIMONIALS ============ */
+  .testimonials{border-bottom:1px solid var(--line); padding-top:96px; padding-bottom:96px;}
+  .testimonials-trust-row{margin-bottom:56px;}
+  .rating-stars{display:flex; justify-content:center; gap:2px; color:var(--gold); margin-bottom:10px;}
+  .rating-stars svg{width:15px; height:15px;}
+
+  .testimonials-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:64px;}
+  .testimonial-card{
+    display:flex; flex-direction:column;
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 24px;
+    background:linear-gradient(180deg, rgba(243,240,232,0.025), transparent);
+    opacity:0; transform:translateY(18px);
+    transition:opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .testimonials.is-visible .testimonial-card{opacity:1; transform:translateY(0);}
+  .testimonials.is-visible .testimonial-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(218,146,28,0.4);
+    box-shadow:0 20px 42px -24px rgba(218,146,28,0.35);
+    transition-delay:0s;
+  }
+  .testimonials.is-visible .testimonial-card:nth-child(1){transition-delay:0.05s;}
+  .testimonials.is-visible .testimonial-card:nth-child(2){transition-delay:0.11s;}
+  .testimonials.is-visible .testimonial-card:nth-child(3){transition-delay:0.17s;}
+  .testimonials.is-visible .testimonial-card:nth-child(4){transition-delay:0.23s;}
+  .testimonials.is-visible .testimonial-card:nth-child(5){transition-delay:0.29s;}
+  .testimonials.is-visible .testimonial-card:nth-child(6){transition-delay:0.35s;}
+
+  .testimonial-identity{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
+  .testimonial-avatar{
+    width:48px; height:48px; border-radius:50%; flex-shrink:0;
+    border:1.5px solid var(--gold); color:var(--iron-light);
+    background:rgba(218,146,28,0.08);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .testimonial-avatar svg{width:22px; height:22px;}
+  .testimonial-name{font-size:15px; font-weight:700; color:var(--text);}
+  .testimonial-role{font-size:12.5px; color:var(--iron);}
+  .testimonial-stars{display:flex; gap:2px; color:var(--gold); margin-bottom:14px;}
+  .testimonial-stars svg{width:14px; height:14px;}
+  .testimonial-quote{
+    font-family:'Cambria', Georgia, serif; font-style:italic;
+    font-size:14.5px; line-height:1.65; color:var(--text);
+    flex-grow:1; margin-bottom:18px;
+  }
+  .testimonial-badges{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px;}
+  .testimonial-badge{
+    font-size:10.5px; text-transform:uppercase; letter-spacing:0.04em; font-weight:700;
+    color:var(--gold); border:1px solid rgba(218,146,28,0.4); border-radius:999px;
+    padding:4px 10px;
+  }
+  .testimonial-meta{
+    font-size:12px; color:var(--iron); font-weight:600;
+    padding-top:14px; border-top:1px solid var(--line); margin-top:auto;
+  }
+
+  /* Video testimonial */
+  .video-testimonial{
+    display:grid; grid-template-columns:1.3fr 1fr; gap:40px; align-items:center;
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px; margin-bottom:72px;
+    background:var(--bg-elevated);
+  }
+  .video-thumb{
+    position:relative; aspect-ratio:16/9; border-radius:var(--radius); overflow:hidden;
+    background:linear-gradient(160deg, rgba(218,146,28,0.14), rgba(243,240,232,0.02) 65%);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .video-play-btn{
+    width:64px; height:64px; border-radius:50%; border:none; cursor:pointer;
+    background:var(--gold); color:#0A0A09;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 32px -10px rgba(218,146,28,0.6);
+    transition:transform 0.25s ease, background 0.25s ease;
+  }
+  .video-play-btn:hover{transform:scale(1.08); background:var(--gold-bright);}
+  .video-play-btn:focus-visible{outline:2px solid var(--gold); outline-offset:4px;}
+  .video-play-btn svg{width:24px; height:24px; margin-left:3px;}
+  .video-testimonial-info h3{font-size:20px; margin-bottom:8px;}
+  .video-testimonial-program{font-size:13px; color:var(--gold); font-weight:600; margin-bottom:12px;}
+  .video-testimonial-desc{font-size:14.5px; line-height:1.65; color:var(--iron);}
+
   /* ============ WHO I COACH ============ */
   .who{background:var(--bg-elevated); border-bottom:1px solid var(--line);}
   .who-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
@@ -888,6 +972,8 @@
     .transform-grid{grid-template-columns:repeat(2,1fr);}
     .transformations-metrics{grid-template-columns:repeat(2,1fr); row-gap:28px; max-width:460px;}
     .metric-card:nth-child(3)::before{display:none;}
+    .testimonials-grid{grid-template-columns:repeat(2,1fr);}
+    .video-testimonial{grid-template-columns:1fr; gap:24px;}
     .hero{padding:100px 0 72px;}
     .hero-grid{grid-template-columns:1fr; gap:56px;}
     .hero-copy{max-width:none;}
@@ -909,6 +995,9 @@
     .transformations{padding-top:56px; padding-bottom:56px;}
     .transform-grid{grid-template-columns:1fr;}
     .transformations-metrics{max-width:320px;}
+    .testimonials{padding-top:56px; padding-bottom:56px;}
+    .testimonials-grid{grid-template-columns:1fr;}
+    .video-testimonial{padding:22px;}
     .hero{padding:64px 0 56px;}
     .wrap{padding:0 18px;}
     nav .wrap{height:68px;}
@@ -1476,6 +1565,221 @@
   </div>
 </section>
 
+<!--
+  Testimonials — Phase 8.
+  All client names, photos, quotes, and stats below are SAMPLE PLACEHOLDER
+  content for layout purposes only, matching the placeholder pattern used in
+  the Transformations section. Replace with real, verified client testimonials
+  and photos before launch.
+-->
+<section class="testimonials reveal" id="testimonials" aria-labelledby="testimonials-heading">
+  <div class="wrap">
+    <div class="programs-header">
+      <div class="kicker">Testimonials</div>
+      <h2 id="testimonials-heading" class="programs-title display">Real People.<br>Real Experiences.</h2>
+      <p class="programs-desc">Every transformation tells a different story. These experiences reflect consistency, commitment, and coaching built around real people &mdash; not shortcuts or unrealistic promises.</p>
+    </div>
+
+    <div class="transformations-metrics testimonials-trust-row">
+      <div class="metric-card">
+        <div class="rating-stars" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+        </div>
+        <div class="stat-num" style="font-size:clamp(22px,2.6vw,28px);">4.9<span class="suffix">/5</span></div>
+        <div class="stat-label">Average Rating</div>
+      </div>
+      <div class="metric-card">
+        <div class="stat-num" data-count="300"><span class="count">0</span><span class="suffix">+</span></div>
+        <div class="stat-label">Client Transformations</div>
+      </div>
+      <div class="metric-card">
+        <div class="stat-num" data-count="95"><span class="count">0</span><span class="suffix">%</span></div>
+        <div class="stat-label">Client Retention</div>
+      </div>
+      <div class="metric-card">
+        <div class="stat-num" data-count="7"><span class="count">0</span></div>
+        <div class="stat-label">Certifications</div>
+      </div>
+    </div>
+
+    <div class="testimonials-grid">
+      <article class="testimonial-card">
+        <div class="testimonial-identity">
+          <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" stroke-linecap="round"/></svg></span>
+          <div>
+            <div class="testimonial-name">Rohan Mehta</div>
+            <div class="testimonial-role">IT Project Manager</div>
+          </div>
+        </div>
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+        </div>
+        <p class="testimonial-quote">&ldquo;Between back-to-back meetings and travel, I never thought I'd actually stick to a plan. What changed wasn't the workouts &mdash; it was having someone hold me accountable every single week.&rdquo;</p>
+        <div class="testimonial-badges">
+          <span class="testimonial-badge">Verified Client</span>
+          <span class="testimonial-badge">Online Coaching</span>
+        </div>
+        <div class="testimonial-meta">Fat Loss &middot; 6 Months</div>
+      </article>
+
+      <article class="testimonial-card">
+        <div class="testimonial-identity">
+          <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" stroke-linecap="round"/></svg></span>
+          <div>
+            <div class="testimonial-name">Kavya Iyer</div>
+            <div class="testimonial-role">Marketing Executive</div>
+          </div>
+        </div>
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+        </div>
+        <p class="testimonial-quote">&ldquo;I'd never stepped into a gym before this. Dinesh never made me feel behind &mdash; every session started from where I actually was, and that's the only reason I didn't quit in the first two weeks.&rdquo;</p>
+        <div class="testimonial-badges">
+          <span class="testimonial-badge">Verified Client</span>
+          <span class="testimonial-badge">Offline Coaching</span>
+        </div>
+        <div class="testimonial-meta">Beginner Program &middot; 4 Months</div>
+      </article>
+
+      <article class="testimonial-card">
+        <div class="testimonial-identity">
+          <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" stroke-linecap="round"/></svg></span>
+          <div>
+            <div class="testimonial-name">Sandeep Rao</div>
+            <div class="testimonial-role">Business Owner</div>
+          </div>
+        </div>
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+        </div>
+        <p class="testimonial-quote">&ldquo;No shakes, no starving myself. Just better food choices and training that fit my schedule. I've lost the weight slowly, but for the first time it's actually staying off.&rdquo;</p>
+        <div class="testimonial-badges">
+          <span class="testimonial-badge">Verified Client</span>
+          <span class="testimonial-badge">Lifestyle Transformation</span>
+        </div>
+        <div class="testimonial-meta">Fat Loss &middot; 5 Months</div>
+      </article>
+
+      <article class="testimonial-card">
+        <div class="testimonial-identity">
+          <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" stroke-linecap="round"/></svg></span>
+          <div>
+            <div class="testimonial-name">Arvind Nair</div>
+            <div class="testimonial-role">College Student</div>
+          </div>
+        </div>
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+        </div>
+        <p class="testimonial-quote">&ldquo;My lifts have gone up every month without me feeling constantly sore or burnt out. The progression is planned &mdash; I'm not just guessing what to do next in the gym anymore.&rdquo;</p>
+        <div class="testimonial-badges">
+          <span class="testimonial-badge">Verified Client</span>
+          <span class="testimonial-badge">Online Coaching</span>
+        </div>
+        <div class="testimonial-meta">Muscle Gain &middot; 8 Months</div>
+      </article>
+
+      <article class="testimonial-card">
+        <div class="testimonial-identity">
+          <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" stroke-linecap="round"/></svg></span>
+          <div>
+            <div class="testimonial-name">Priyanka Shah</div>
+            <div class="testimonial-role">Homemaker &amp; Mother of Two</div>
+          </div>
+        </div>
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+        </div>
+        <p class="testimonial-quote">&ldquo;This wasn't about becoming someone else &mdash; it was about feeling strong in my own body again after having kids. The confidence that came with that surprised me more than the number on the scale.&rdquo;</p>
+        <div class="testimonial-badges">
+          <span class="testimonial-badge">Verified Client</span>
+          <span class="testimonial-badge">Lifestyle Transformation</span>
+        </div>
+        <div class="testimonial-meta">Women's Fitness &middot; 6 Months</div>
+      </article>
+
+      <article class="testimonial-card">
+        <div class="testimonial-identity">
+          <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" stroke-linecap="round"/></svg></span>
+          <div>
+            <div class="testimonial-name">Karthik Subramaniam</div>
+            <div class="testimonial-role">Software Engineer</div>
+          </div>
+        </div>
+        <div class="testimonial-stars" aria-label="5 out of 5 stars">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7-6.3-3.9-6.3 3.9 1.7-7L1 9.5l7.1-.6z"/></svg>
+        </div>
+        <p class="testimonial-quote">&ldquo;I'd been lifting for years but plateaued hard. Fixing my form alone unlocked numbers I hadn't hit in two years &mdash; turns out I was just leaving strength on the table with bad technique.&rdquo;</p>
+        <div class="testimonial-badges">
+          <span class="testimonial-badge">Verified Client</span>
+          <span class="testimonial-badge">Offline Coaching</span>
+        </div>
+        <div class="testimonial-meta">Strength Coaching &middot; 7 Months</div>
+      </article>
+    </div>
+
+    <!--
+      Video testimonial placeholder. Replace .video-thumb with a real
+      <video> or embedded player when footage is available.
+    -->
+    <div class="video-testimonial">
+      <div class="video-thumb" role="img" aria-label="Video testimonial from Rohan Mehta — coming soon">
+        <button type="button" class="video-play-btn" aria-label="Play video testimonial from Rohan Mehta">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
+      <div class="video-testimonial-info">
+        <h3>Rohan Mehta</h3>
+        <p class="video-testimonial-program">Fat Loss Program &middot; 6 Months &middot; 3:24</p>
+        <p class="video-testimonial-desc">Watch Rohan talk through how weekly accountability changed his consistency &mdash; even with a packed travel schedule.</p>
+      </div>
+    </div>
+
+    <div class="programs-cta">
+      <h3 class="programs-cta-title display">Ready to Start Your<br>Own Transformation?</h3>
+      <p class="programs-cta-desc">Every successful transformation starts with one conversation. Let's build a plan that fits your goals, schedule, and lifestyle.</p>
+      <div class="hero-cta-row programs-cta-row">
+        <a class="cta-primary" href="https://wa.me/919885513807?text=Hi%2C%20I%27d%20like%20to%20book%20my%20Free%20Assessment" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.5 3.58 1.44 5.06L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.12.11-1.8-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.8-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.28.57-.35.76-.35.19 0 .38.001.55.01.18.01.42-.07.65.5.24.58.81 2 .88 2.15.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.17-.31.38-.44.5-.15.15-.3.31-.13.6.17.29.77 1.27 1.66 2.05 1.14 1.02 2.11 1.34 2.4 1.49.29.15.46.13.63-.05.17-.19.72-.84.91-1.13.19-.29.38-.24.63-.14.26.1 1.63.77 1.9.91.28.15.46.22.53.34.07.13.07.72-.17 1.41z"/></svg>
+          Book Free Assessment
+        </a>
+        <a class="cta-secondary" href="#programs">
+          View Programs
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="who reveal reveal-left">
   <div class="wrap">
     <div class="section-head">
@@ -1701,9 +2005,11 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const el = entry.target;
-          const target = parseInt(el.getAttribute('data-count'), 10);
           const countEl = el.querySelector('.count');
-          animateCountTo(target, 900, (val) => { countEl.textContent = val; });
+          if (countEl) {
+            const target = parseInt(el.getAttribute('data-count'), 10);
+            animateCountTo(target, 900, (val) => { countEl.textContent = val; });
+          }
           observer.unobserve(el);
         }
       });
@@ -1711,7 +2017,8 @@
     counters.forEach(el => observer.observe(el));
   } else {
     counters.forEach(el => {
-      el.querySelector('.count').textContent = el.getAttribute('data-count');
+      const countEl = el.querySelector('.count');
+      if (countEl) countEl.textContent = el.getAttribute('data-count');
     });
   }
 
