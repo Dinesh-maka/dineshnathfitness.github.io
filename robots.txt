@@ -1,0 +1,6 @@
+# robots.txt for Dinesh Nath Fitness
+
+User-agent: *
+Allow: /
+
+Sitemap: https://dineshnathfitness.github.io/sitemap.xml
